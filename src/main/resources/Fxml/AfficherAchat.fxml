@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="form_container" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherAchatController">
+   <children>
+      <Label layoutX="103.0" layoutY="110.0" text="Nombre achats:" />
+      <TextField fx:id="lbnombreachat" layoutX="232.0" layoutY="101.0" />
+      <Label layoutX="103.0" layoutY="161.0" text="Prix:" />
+      <TextField fx:id="lbprix" layoutX="232.0" layoutY="157.0" />
+   </children>
+</AnchorPane>
