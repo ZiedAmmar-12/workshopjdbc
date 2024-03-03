@@ -32,9 +32,7 @@ import javax.imageio.ImageIO;
 
 public class AjouterProduitController {
 
-    /*public TextField nametf;
-    public TextField categorietf;
-    public TextField prixtf;*/
+
     @FXML
     private ResourceBundle resources;
 
@@ -81,6 +79,7 @@ public class AjouterProduitController {
         }
     }
 
+
     public String generateQRCodeAndSave(String text, String fileName) throws WriterException {
         // Generate the QR code
 
@@ -92,7 +91,7 @@ public class AjouterProduitController {
         Image fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
 
         // Save the image to the specified directory
-        String directoryPath = "C:\\Users\\User\\Desktop\\workshopjdbc-master\\src\\main\\java\\tn\\esprit\\Qrimages";
+        String directoryPath = "C:\\Users\\Lenovo\\IdeaProjects\\PIdevJava1\\src\\main\\java\\tn\\esprit\\Qrimages";
         Path directory = Paths.get(directoryPath);
         if (!Files.exists(directory)) {
             try {

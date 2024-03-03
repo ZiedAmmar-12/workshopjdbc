@@ -18,6 +18,10 @@ public class Produit {
         this.prix = prix;
     }
 
+    public Produit(int idP) {
+
+    }
+
     public int getId() {
         return id;
     }

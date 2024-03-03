@@ -18,7 +18,7 @@ public class ServiceProduit implements IService<Produit> {
         // ajouter un produit dans la bd
         //1 - req SQL done
         //2 - executer la req SQL done
-        String qry ="INSERT INTO `produit`(`nombre_produits`, `description`, name, categorie, `prix`) VALUES (?,?,?,?,?)";
+        String qry ="INSERT INTO `produit`(`nb_produit`, `description`, name, categorie, `prix`) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement stm = cnx.prepareStatement(qry);
             stm.setInt(1,produit.getNb_produit());
@@ -54,7 +54,7 @@ public class ServiceProduit implements IService<Produit> {
             while (rs.next()){
                 Produit pr = new Produit();
                 pr.setId(rs.getInt(1));
-                pr.setNb_produit(rs.getInt("nombre_produits"));
+                pr.setNb_produit(rs.getInt("nb_produit"));
                 pr.setDescription(rs.getString(3));
                 pr.setName(rs.getString("name"));
                 pr.setCategorie(rs.getString("categorie"));

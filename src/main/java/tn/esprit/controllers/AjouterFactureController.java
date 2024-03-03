@@ -18,13 +18,6 @@ import tn.esprit.services.ServiceFacture;
 
 public class AjouterFactureController {
 
-    /*public TextField prixunitairetf;
-    public TextField quantitetf;
-    public TextField montanthttf;
-    public TextField tvatf;
-    public TextField montantttctf;
-    public TextField datetf;
-    public TextField typedevisetf;*/
 
     @FXML
     private ResourceBundle resources;
