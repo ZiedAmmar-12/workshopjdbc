@@ -6,6 +6,8 @@ import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class ServiceProduit implements IService<Produit> {
     private Connection cnx ;
@@ -112,5 +114,11 @@ public class ServiceProduit implements IService<Produit> {
 
 
         return false;
+    }
+
+    public List<Produit> getAllSortedByPrix() {
+        List<Produit> produits = getAll();
+        produits.sort(Comparator.comparing(Produit::getPrix));
+        return produits;
     }
 }

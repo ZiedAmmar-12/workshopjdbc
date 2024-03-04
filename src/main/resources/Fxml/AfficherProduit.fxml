@@ -46,10 +46,12 @@
                 </Text>
             </children>
         </AnchorPane>
-        <Button layoutX="21.0" layoutY="616.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: red;" text="Delete" textFill="#f4f2f2">
+        <Button layoutX="21.0" layoutY="565.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: red;" text="Delete" textFill="#f4f2f2">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
+      <Button layoutX="21.0" layoutY="502.0" mnemonicParsing="false" onAction="#tri" text="Tri" />
+      <Button layoutX="21.0" layoutY="619.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
     </children>
 </AnchorPane>

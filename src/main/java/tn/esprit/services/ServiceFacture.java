@@ -6,6 +6,7 @@ import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ServiceFacture implements IService<Facture> {
@@ -131,5 +132,11 @@ public class ServiceFacture implements IService<Facture> {
         }
 
         return list;
+    }
+
+    public List<Facture> getAllSortedByDate() {
+        List<Facture> factures = getAll();
+        factures.sort(Comparator.comparing(Facture::getDate));
+        return factures;
     }
 }

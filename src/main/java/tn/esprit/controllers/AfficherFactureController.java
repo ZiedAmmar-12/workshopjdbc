@@ -9,38 +9,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import tn.esprit.models.Facture;
 import tn.esprit.services.ServiceFacture;
-import tn.esprit.services.ServicePersonne;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class AfficherFactureController implements Initializable {
-    @FXML
-    private TextField lbprixunitaire;
+
 
     @FXML
     private ListView<Facture> mylistcomm;
 
-    public TextField getLbprixunitaire() {
-        return lbprixunitaire;
-    }
-
-    public void setLbprixunitaire(int lbprixunitaire) {
-        this.lbprixunitaire.setText(String.valueOf(lbprixunitaire));
-    }
-
-    public void setlbprixunitaire(int i) {
-    }
+    @FXML
+    private AnchorPane idAnchor;
 
     @FXML
     private Text date;
@@ -59,91 +46,7 @@ public class AfficherFactureController implements Initializable {
     private Text quantite;
 
     String quantitenv;
-    @FXML
-    private TextField lbquantite;
 
-    @FXML
-    private AnchorPane idAnchor;
-    public TextField getLbquantite() {
-        return lbquantite;
-    }
-
-    public void setLbquantite(int lbquantite) {
-        this.lbquantite.setText(String.valueOf(lbquantite));
-    }
-
-    public void setlbquantite(int i) {
-    }
-
-    @FXML
-    private TextField lbmontantht;
-
-    public TextField getLbmontantht() {
-        return lbmontantht;
-    }
-
-    public void setLbmontantht(int lbmontantht) {
-        this.lbmontantht.setText(String.valueOf(lbmontantht));
-    }
-
-    public void setlbmontantht(int i) {
-    }
-
-    @FXML
-    private TextField lbtva;
-
-    public TextField getLbtva() {
-        return lbtva;
-    }
-
-    public void setLbtva(Float lbtva) {
-        this.lbtva.setText(String.valueOf(lbtva));
-    }
-
-    public void setlbtva(Float i) {
-    }
-
-    @FXML
-    private TextField lbmontantttc;
-
-    public TextField getLbmontantttc() {
-        return lbmontantttc;
-    }
-
-    public void setLbmontantttc(int lbmontantttc) {
-        this.lbmontantttc.setText(String.valueOf(lbmontantttc));
-    }
-
-    public void setlbmontantttc(int i) {
-    }
-
-    @FXML
-    private TextField lbdate;
-
-    public TextField getLbdate() {
-        return lbdate;
-    }
-
-    public void setLbdate(String lbdate) {
-        this.lbdate.setText(String.valueOf(lbdate));
-    }
-
-    public void setlbdate(String i) {
-    }
-
-    @FXML
-    private TextField lbtypedevise;
-
-    public TextField getLbtypedevise() {
-        return lbtypedevise;
-    }
-
-    public void setLbtypedevise(String lbtypedevise) {
-        this.lbtypedevise.setText(String.valueOf(lbtypedevise));
-    }
-
-    public void setlbtypedevise(String i) {
-    }
 
     @FXML
     void showFac(ActionEvent event) {
@@ -168,8 +71,58 @@ public class AfficherFactureController implements Initializable {
         ServiceFacture sp = new ServiceFacture();
         sp.delete(new Facture(idF));
     }
+
+    @FXML
+    void tri(ActionEvent event) {
+        // Appeler la méthode de tri des factures dans ServiceFacture
+        ServiceFacture sp = new ServiceFacture();
+        mylistcomm.getItems().setAll(sp.getAllSortedByDate());
+    }
+
+    @FXML
+    void retour(ActionEvent event) throws IOException {
+        Parent page2 = FXMLLoader.load(getClass().getResource("/Fxml/AjouterFacture.fxml"));
+
+        Scene scene2 = new Scene(page2);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        app_stage.setScene(scene2);
+        app_stage.show();
+    }
+
+
+
+
     int idF;
+
     @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialiser la liste des factures triées par date
+        ServiceFacture sp = new ServiceFacture();
+        mylistcomm.getItems().setAll(sp.getAllSortedByDate());
+
+        // Sélectionner un élément dans la liste affiche les détails de la facture correspondante
+        mylistcomm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                idF = newValue.getId();
+                prixnvnv = String.valueOf(newValue.getPrix_unitaire());
+                quantitenv = String.valueOf(newValue.getQuantite());
+                monantnv = String.valueOf(newValue.getMontant_ht());
+                datenv = String.valueOf(newValue.getDate());
+
+                prixuni.setText(prixnvnv);
+                quantite.setText(quantitenv);
+                montant.setText(monantnv);
+                date.setText(datenv);
+
+                System.out.println("prixnvnv " + prixnvnv);
+            }
+        });
+
+
+        System.out.println("prixnvnv1 " + prixnvnv);
+    }
+
+    /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ServiceFacture sp = new ServiceFacture();
         mylistcomm.getItems().setAll(sp.getAll());
@@ -191,6 +144,30 @@ public class AfficherFactureController implements Initializable {
         System.out.println("prixnvnv1 " + prixnvnv);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialiser la liste des factures triées par date
+        ServiceFacture sp = new ServiceFacture();
+        mylistcomm.getItems().setAll(sp.getAllSortedByDate());
+
+        // Sélectionner un élément dans la liste affiche les détails de la facture correspondante
+        mylistcomm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            idF = newValue.getId();
+            prixnvnv = String.valueOf(newValue.getPrix_unitaire());
+            quantitenv = String.valueOf(newValue.getQuantite());
+            monantnv = String.valueOf(newValue.getMontant_ht());
+            datenv = String.valueOf(newValue.getDate());
+
+            prixuni.setText(prixnvnv);
+            quantite.setText(quantitenv);
+            montant.setText(monantnv);
+            date.setText(datenv);
+
+            System.out.println("prixnvnv " + prixnvnv);
+        });
+
+        System.out.println("prixnvnv1 " + prixnvnv);
+    }*/
 
 
 

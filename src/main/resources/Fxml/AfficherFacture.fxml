@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="721.0" prefWidth="668.0" styleClass="form_container" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherFactureController">
    <children>
       <ListView fx:id="mylistcomm" layoutX="131.0" layoutY="344.0" prefHeight="337.0" prefWidth="458.0" />
-      <Button layoutX="14.0" layoutY="656.0" mnemonicParsing="false" onAction="#showFac" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: blue;" text="Exporter" textFill="WHITE" />
+      <Button layoutX="21.0" layoutY="544.0" mnemonicParsing="false" onAction="#showFac" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: blue;" text="Exporter" textFill="WHITE" />
       <AnchorPane fx:id="idAnchor" layoutX="107.0" layoutY="14.0" prefHeight="318.0" prefWidth="493.0" style="-fx-background-color: #E1F7D5;">
          <children>
             <Text layoutX="14.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite">
@@ -54,10 +54,12 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button layoutX="21.0" layoutY="616.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: red;" text="Delete" textFill="#f4f2f2">
+      <Button layoutX="21.0" layoutY="431.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: red;" text="Delete" textFill="#f4f2f2">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
+      <Button layoutX="21.0" layoutY="486.0" mnemonicParsing="false" onAction="#tri" text="Tri" />
+      <Button layoutX="21.0" layoutY="599.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
    </children>
 </AnchorPane>
