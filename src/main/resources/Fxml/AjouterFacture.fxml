@@ -30,5 +30,10 @@
             <Font size="30.0" />
          </font>
       </Text>
+      <Button layoutX="446.0" layoutY="389.0" mnemonicParsing="false" onAction="#gestionproduit" prefHeight="35.0" prefWidth="312.0" text="G_produit">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

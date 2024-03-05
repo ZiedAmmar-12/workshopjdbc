@@ -101,6 +101,17 @@ public class AjouterFactureController {
     }
 
     @FXML
+    void gestionproduit(ActionEvent event) throws IOException {
+        Parent page2 = FXMLLoader.load(getClass().getResource("/Fxml/AjouterProduit.fxml"));
+
+        Scene scene2 = new Scene(page2);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        app_stage.setScene(scene2);
+        app_stage.show();
+    }
+
+
+    @FXML
     void initialize() {
 
         assert prixunitairetf != null : "fx:id=\"prixunitairetf\" was not injected: check your FXML file 'AjouterFacture.fxml'.";

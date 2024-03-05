@@ -121,6 +121,16 @@ public class AjouterProduitController {
     }
 
     @FXML
+    void gestionfacture(ActionEvent event) throws IOException {
+        Parent page2 = FXMLLoader.load(getClass().getResource("/Fxml/AjouterFacture.fxml"));
+
+        Scene scene2 = new Scene(page2);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        app_stage.setScene(scene2);
+        app_stage.show();
+    }
+
+    @FXML
     void initialize() {
 
 
