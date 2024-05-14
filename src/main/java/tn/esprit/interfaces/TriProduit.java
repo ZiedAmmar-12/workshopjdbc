@@ -42,6 +42,8 @@ public class TriProduit {
                 pr.setName(rs.getString("name"));
                 pr.setCategorie(rs.getString("categorie"));
                 pr.setPrix(rs.getInt("prix"));
+                pr.setPhoto(rs.getString("photo"));
+
 
                 produits.add(pr);
             }

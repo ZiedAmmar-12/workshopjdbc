@@ -3,19 +3,21 @@ package tn.esprit.models;
 public class Produit {
 
     private int id , nb_produit ;
-    private String description , name , categorie ;
+    private String description , name , categorie , photo;
     private float prix ;
 
     public Produit() {
     }
 
-    public Produit(int id ,int nb_produit, String description, String name , String categorie, float prix) {
+    public Produit(int id ,int nb_produit, String description, String name , String categorie, float prix, String photo) {
         this.id = id;
         this.nb_produit = nb_produit;
         this.description = description;
         this.name = name;
         this.categorie = categorie;
         this.prix = prix;
+        this.photo = photo;
+
     }
 
     public Produit(int idP) {
@@ -70,13 +72,24 @@ public class Produit {
         this.prix = prix;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
         return "Produit{" +
                 "id=" + id +
-                ", nombreproduit=" + nb_produit +
+                ", nb_produit=" + nb_produit +
                 ", description='" + description + '\'' +
-                ", prix='" + prix + '\'' +
+                ", name='" + name + '\'' +
+                ", categorie='" + categorie + '\'' +
+                ", prix=" + prix +
+                ", photo='" + photo + '\'' +
                 "}\n";
     }
 }

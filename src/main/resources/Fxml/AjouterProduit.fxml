@@ -7,29 +7,46 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
 <AnchorPane prefHeight="471.0" prefWidth="743.0" styleClass="form_container" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterProduitController">
     <children>
-        <Label layoutX="70.0" layoutY="53.0" text="Nombre produits:" />
-        <Label layoutX="70.0" layoutY="114.0" text="Description:" />
-        <TextField fx:id="nombreproduittf" layoutX="187.0" layoutY="44.0" />
-        <TextField fx:id="descriptiontf" layoutX="187.0" layoutY="105.0" />
-        <TextField fx:id="prixtf" layoutX="187.0" layoutY="274.0" />
-        <Label layoutX="64.0" layoutY="274.0" text="Prix:" />
+        <Label layoutX="69.0" layoutY="114.0" text="Nombre produits:" />
+        <Label layoutX="436.0" layoutY="114.0" text="Description:" />
+        <TextField fx:id="nombreproduittf" layoutX="179.0" layoutY="105.0" />
+        <TextField fx:id="descriptiontf" layoutX="509.0" layoutY="105.0" />
+        <TextField fx:id="prixtf" layoutX="179.0" layoutY="265.0" />
+        <Label layoutX="122.0" layoutY="265.0" text="Prix:" />
+        <Button fx:id="uploadButton" layoutX="100" layoutY="200" text="Upload Photo">
+            <graphic>
+                <ImageView>
+                    <Image url="@/icons/upload.png"/>
+                </ImageView>
+            </graphic>
+        </Button>
+
         <Button layoutX="114.0" layoutY="382.0" mnemonicParsing="false" onAction="#AjouterProduit" text="Ajouter" />
         <Button layoutX="254.0" layoutY="382.0" mnemonicParsing="false" onAction="#afficherProduit" text="Afficher" />
-      <TextField fx:id="nametf" layoutX="187.0" layoutY="163.0" />
-      <TextField fx:id="categorietf" layoutX="187.0" layoutY="214.0" />
-      <Label layoutX="70.0" layoutY="172.0" text="Name:" />
-      <Label layoutX="64.0" layoutY="223.0" text="Categorie::" />
+      <TextField fx:id="nametf" layoutX="179.0" layoutY="181.0" />
+      <TextField fx:id="categorietf" layoutX="509.0" layoutY="181.0" />
+      <Label layoutX="116.0" layoutY="190.0" text="Name:" />
+      <Label layoutX="440.0" layoutY="190.0" text="Categorie::" />
       <Text fx:id="msj" layoutX="114.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="297.76401138305664">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Button layoutX="462.0" layoutY="122.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gestionfacture" prefHeight="35.0" prefWidth="193.0" text="G_Facture">
+      <Button layoutX="432.0" layoutY="382.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gestionfacture" prefHeight="35.0" prefWidth="193.0" text="G_Facture">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
+      <Label layoutX="305.0" layoutY="40.0" styleClass="title" text="Gestion Produits" />
     </children>
 </AnchorPane>

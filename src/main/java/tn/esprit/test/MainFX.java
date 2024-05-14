@@ -16,20 +16,16 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/Fxml/AjouterFacture.fxml"));
         try {
+            // Ensure the path to the FXML file is correct
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/AjouterProduit.fxml"));
             Parent root = loader.load();
-            Scene scene =new Scene(root);
-            primaryStage.setTitle("gestion produit");
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("Gestion Produits");
             primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
-
             primaryStage.show();
-
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
-
     }
-
-    }
+}

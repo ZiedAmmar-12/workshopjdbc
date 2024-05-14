@@ -53,6 +53,8 @@ public class RechercheProduit {
                     produit.setName(resultSet.getString("name"));
                     produit.setCategorie(resultSet.getString("categorie"));
                     produit.setPrix(resultSet.getFloat("prix"));
+                    produit.setPhoto(resultSet.getString("photo"));
+
 
                     matchingComments.add(produit);
                 }
@@ -79,6 +81,7 @@ public class RechercheProduit {
                     produit.setName(resultSet.getString("name"));
                     produit.setCategorie(resultSet.getString("categorie"));
                     produit.setPrix(resultSet.getFloat("prix"));
+                    produit.setPhoto(resultSet.getString("photo"));
 
                     matchingComments.add(produit);
                 }

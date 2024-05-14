@@ -14,15 +14,18 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.models.Produit;
 import tn.esprit.services.ServiceProduit;
@@ -57,18 +60,24 @@ public class AjouterProduitController {
 
     @FXML TextField prixtf;
 
+    @FXML
+    private Button uploadButton;
+
+
+
 
     private final ServiceProduit ps = new ServiceProduit();
-
+    private String photoPath;
     private boolean validateFields() {
         return !nombreproduittf.getText().isEmpty() && !descriptiontf.getText().isEmpty()
-                && !nametf.getText().isEmpty() && !categorietf.getText().isEmpty() && !prixtf.getText().isEmpty();
+                && !nametf.getText().isEmpty() && !categorietf.getText().isEmpty() && !prixtf.getText().isEmpty()
+                && photoPath != null && !photoPath.isEmpty();
     }
     @FXML
     void AjouterProduit(ActionEvent event) throws WriterException {
         if (validateFields()) {
 
-            ps.add(new Produit(0,Integer.parseInt(nombreproduittf.getText()),descriptiontf.getText(),nametf.getText(),categorietf.getText(),Integer.parseInt(prixtf.getText())));
+            ps.add(new Produit(0,Integer.parseInt(nombreproduittf.getText()),descriptiontf.getText(),nametf.getText(),categorietf.getText(),Integer.parseInt(prixtf.getText()), photoPath));
 
         String texttoqr=" Nom : "+nametf.getText()+"\n Categorie : "+categorietf.getText()+"\n Description : "+descriptiontf.getText()+"\n Prix : "+prixtf.getText();
         String fileName = "QRCode_" + nametf.getText();
@@ -78,6 +87,21 @@ public class AjouterProduitController {
             msj.setText("Veuillez remplir tous les champs.");
         }
     }
+
+    @FXML
+    private void uploadPhoto(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Photo");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+        if (selectedFile != null) {
+            photoPath = selectedFile.getAbsolutePath();
+            msj.setText("Photo selected: " + selectedFile.getName());
+        }
+    }
+
 
 
     public String generateQRCodeAndSave(String text, String fileName) throws WriterException {
@@ -143,6 +167,8 @@ public class AjouterProduitController {
         assert categorietf != null : "fx:id=\"categorietf\" was not injected: check your FXML file 'AjouterProduit.fxml'.";
 
         assert prixtf != null : "fx:id=\"prixtf\" was not injected: check your FXML file 'AjouterProduit.fxml'.";
+
+        assert uploadButton != null : "fx:id=\"uploadButton\" was not injected: check your FXML file 'AjouterProduit.fxml'.";
 
     }
 
